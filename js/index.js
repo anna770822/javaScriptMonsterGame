@@ -28,7 +28,7 @@ class BaseCharacter {
 
   updateHTML(hpElement,hurtElement){
     hpElement.textContent = this.hp;
-    hurtElement.style.width = (100-this.hp/this.maxHp*100)+"%";
+    hurtElement.style.width = (100-this.hp/this.maxHP*100)+"%";
 
   }
 
@@ -45,7 +45,7 @@ class Hero extends BaseCharacter{
     this.hurtElement = document.getElementById("hero-hp-hurt");
 
     this.hpElement.textContent = this.hp;
-    this.maxHpElement.textContent = this.maxHp;
+    this.maxHpElement.textContent = this.maxHP;
 
     console.log("召喚英雄"+this.name+"!");
   }
@@ -90,3 +90,59 @@ class Monster extends BaseCharacter{
 //    //
 var hero = new Hero("Bernard", 130, 30);
 var monster = new Monster("Skeleton", 130, 10);
+
+
+//invoke Event//
+function  addSkillEvent(){
+  var skill = document.getElementById("skill");
+  skill.onclick = function(){
+    heroAttack();
+  }
+}
+addSkillEvent();
+
+//hero attackfunction//
+
+function heroAttack(){//hide attack button /skill button//
+  document.getElementsByClassName("skill-block")[0].style.display = "none";
+  setTimeout(function(){
+    hero.element.classList.add("attacking");//move to monster//
+    setTimeout(function(){
+      hero.attack(monster);
+      hero.element.classList.remove("attacking");
+    },500);
+  },100);
+
+  setTimeout(function(){
+    if (monster.alive){
+      monster.element.classList.add("attacking");
+      setTimeout(function(){
+        monster.attack(hero);
+        monster.element.classList.remove("attacking");
+        endTurn();
+        if (hero.alive == false){}
+        else{document.getElementsByClassName("skill-block")[0].style.display="block";}
+      },500);
+  } else{    }
+},1100);
+  
+
+
+}
+
+//round count//
+
+var rounds = 10;
+function endTurn(){rounds--;
+document.getElementById("round-num").textContent = rounds;
+if(rounds < 1){
+  }
+}
+
+
+
+
+
+
+
+
