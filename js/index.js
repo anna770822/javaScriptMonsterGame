@@ -110,11 +110,19 @@ class Hero extends BaseCharacter{
         document.getElementsByClassName("hurt-text")[0].textContent = "";
         clearInterval(id);}
 
-        },50)
+        },80)
   }
   
 }
 
+
+document.onkeyup = function(event) {
+    var key = String.fromCharCode(event.keyCode);
+    if (key == "A") {
+      heroAttack();
+    } 
+    if (key=="D"){hero.heal();}
+  }
 
 
 
