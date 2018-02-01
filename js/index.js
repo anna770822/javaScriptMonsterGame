@@ -93,7 +93,24 @@ class Hero extends BaseCharacter{
     },500);
   },100);
 
+  var i = 1;
+  var id = setInterval(function(){
+    if (i==1){
+    document.getElementsByClassName("effect-image")[0].style.display="block";
+    document.getElementsByClassName("hurt-text")[0].classList.add("attacked");
+    document.getElementsByClassName("hurt-text")[0].classList.add("heal");
+    document.getElementsByClassName("hurt-text")[0].textContent = 30;}
 
+    document.getElementsByClassName("effect-image")[0].src="images/heal/"+i+".png";
+        i++;
+    if (i>7){
+        document.getElementsByClassName("effect-image")[0].style.display="none";
+        document.getElementsByClassName("hurt-text")[0].classList.remove("attacked");
+        document.getElementsByClassName("hurt-text")[0].classList.remove("heal");
+        document.getElementsByClassName("hurt-text")[0].textContent = "";
+        clearInterval(id);}
+
+        },50)
   }
   
 }
