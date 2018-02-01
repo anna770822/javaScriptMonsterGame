@@ -36,7 +36,7 @@ class BaseCharacter {
         _this.element.getElementsByClassName("hurt-text")[0].textContent = "";
         clearInterval(_this.id);}
 
-        },150)
+        },200)
       
   }
 
@@ -110,7 +110,7 @@ class Hero extends BaseCharacter{
         document.getElementsByClassName("hurt-text")[0].textContent = "";
         clearInterval(id);}
 
-        },150)
+        },200)
   }
   
 }
