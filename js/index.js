@@ -76,8 +76,18 @@ class Hero extends BaseCharacter{
     this.updateHTML(this.hpElement,this.hurtElement);
 
     }
+  heal(){console.log(this.hp);
+  this.hp = this.hp +30;
+  this.hpElement.textContent = this.hp;
+  this.hurtElement.style.width = (100-this.hp/this.maxHP*100)+"%";
+
+  }
 
 }
+
+
+
+
 //    //
 class Monster extends BaseCharacter{
 
@@ -107,7 +117,7 @@ class Monster extends BaseCharacter{
 }
 //    //
 var hero = new Hero("Bernard", 100 , 10);
-var monster = new Monster("Skeleton", 130, 10);
+var monster = new Monster("Skeleton", 130, 50);
 
 
 //invoke Event//
@@ -116,6 +126,12 @@ function  addSkillEvent(){
   skill.onclick = function(){
     heroAttack();
   }
+
+  var heal = document.getElementById("heal");
+  heal.onclick = function(){
+    console.log("clicked");
+    hero.heal();} 
+
 }
 addSkillEvent();
 
@@ -143,10 +159,10 @@ function heroAttack(){//hide attack button /skill button//
       },500);
   } else{ finish();   }
 },1100);
-  
-
-
 }
+
+
+
 
 //round count//
 

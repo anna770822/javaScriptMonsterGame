@@ -140,11 +140,11 @@
   bottom: 150px;
 }
 
-#hero-image-block .skill-block {
+#hero-image-block .skill-block{
   position: relative;
 }
 
-#hero-image-block .skill-image {
+#hero-image-block .skill-image, #hero-image-block .heal-image {
   width: 20%;
 }
 
